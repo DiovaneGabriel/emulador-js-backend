@@ -14,4 +14,8 @@ class Console extends Model {
         'folder',
         'settings',
     ];
+
+    public function game() {
+        return $this->hasMany(Game::class);
+    }
 }

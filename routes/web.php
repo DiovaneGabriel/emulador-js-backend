@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+// Route::get('/', function () {
 
-    return view('emulator');
-    // return view('welcome');
-});
+
+//     return view('emulator');
+//     // return view('welcome');
+// });
+
+Route::get('/game/{id}', [GameController::class, "getGame"]);
