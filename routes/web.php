@@ -14,11 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-
-
-//     return view('emulator');
-//     // return view('welcome');
-// });
-
 Route::get('/game/{id}', [GameController::class, "getGame"]);
