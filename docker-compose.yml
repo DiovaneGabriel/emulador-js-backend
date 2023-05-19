@@ -1,0 +1,36 @@
+version: '2'
+services:
+  emulatorJs:
+    image: docker.io/bitnami/laravel:10
+    ports:
+      - '80:8000'
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - './:/app'
+    depends_on:
+      - mysql
+  mysql:
+    image: docker.io/bitnami/mysql:8.0
+    ports:
+      - '3306:3306'
+    volumes:
+      - 'mysql_data:/bitnami/mysql/data'
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    healthcheck:
+      test: ['CMD', '/opt/bitnami/scripts/mysql/healthcheck.sh']
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
+volumes:
+  mysql_data:
+    driver: local
