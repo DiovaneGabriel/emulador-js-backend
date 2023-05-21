@@ -19,4 +19,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/list/consoles', [ListController::class, "getConsoles"]);
-Route::get('/list/games/{consoleId}', [ListController::class, "getGames"]);
+Route::get('/list/cartridges', [ListController::class, "getCartridges"]);
+Route::get('/list/console-games/{consoleId}', [ListController::class, "getConsoleGames"]);
+Route::get('/list/cartridge-games/{consoleId}', [ListController::class, "getCartridgeGames"]);

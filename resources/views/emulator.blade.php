@@ -25,16 +25,21 @@
 </body>
 
 <footer>
+    <!-- https://emulatorjs.org/ -->
+    <!-- https://www.youtube.com/watch?v=AJ08dEzx1O0 -->
     <script type='text/javascript'>
         EJS_player = '#game';
+        EJS_language = 'pt-BR';
+        EJS_startOnLoaded = true;
         EJS_core = '{!!$game->console->core!!}';
         EJS_oldCores = true;
         EJS_gameUrl = '/emulatorJs/roms/{!!$game->console->folder."/".$game->file!!}';
         EJS_pathtodata = '/emulatorJs/data/';
-        EJS_gameID = {!!$game->id!!};
+        EJS_gameID = '{!!$game->id!!}';
 
         EJS_color = "#FFA500";
-        EJS_Settings = {!!($game->settings ? $game->settings : ($game->console->settings ? $game->console->settings : "''"))!!};
+        EJS_Settings = {!!($game->settings ? $game->settings : ($game->console->settings ? $game->console->settings : "''")) !!};
+        EJS_onSaveState = function(e) {console.log(e)};
         // EJS_pathtodata = "https://rawcdn.githack.com/EmulatorJS/EmulatorJS/main/data/";
         EJS_lightgun = false; // Lightgun
         EJS_oldCores = true;
